@@ -1,0 +1,159 @@
+// NOTES:
+    //
+    // don't forget to: ERASE THIS BEFORE DEPLOYING
+    // npm init
+    // npm install express --save
+    // npm install ejs --save
+    // npm install request --save // in case you have to make requests
+    // npm install mongoose --save // in case you have to use MongoDB
+    // npm install connect-flash --save // flash messages
+    // npm install passport passport-local passport-local-mongoose --save // to use Authentication
+    // npm install body-parser --save // in case of a form
+    // npm install express-session --save // to use Authentication
+    // npm install method-override --save // To edit posts in a form
+    // npm install express-sanitizer --save // to avoid the usage of scripts by users
+    // npm install dotenv --save // ambient variables - process.env.VARIABLE
+    // create a 'public' folder
+    // create 'public/assets' for css, js, lib
+    // create 'views'
+    // create 'views/partials' for templates - <% include partials/template_name %>
+
+// --- VARIABLES DECLARATION
+
+var express = require("express"); // express
+var app = express();
+var dotenv = require("dotenv"); // ambient variable - process.env.VARIABLE- save them in root, file .env
+dotenv.config();
+
+app.use(flash()); // flash messages;
+
+// --- USE WITH AUTH
+//	app.use(require("express-session")({
+//		secret: "--ANYTHING YOU WANT--", // USED TO ENCODE AND DECODE THE SESSIONS - USE ANYTHING YOU WANT
+//		resave: false,
+//		saveUninitialized: false
+//	}));
+// ---
+
+// var bodyParser = require("body-parser"); // body-parser for POST requests
+// app.use(bodyParser.urlencoded({extended: true}));
+
+// var mongoose = require("mongoose");
+// mongoose.Promise = global.Promise;
+// mongoose.connect("mongodb://localhost/DB_NAME", {useMongoClient: true});
+
+// var flash = require("connect-flash"); // flash messages
+
+// ---VARIABLES FOR REQUIRING PASSPORT TO USE AUTHENTICATION
+// var passport = require("passport"); // to use auth with passport
+// var LocalStrategy = require("passport-local"); // to use with Passport-Local
+// var passportLocalMongoose = require("passport-local-mongoose");
+
+// app.use(passport.initialize()); // to start Passport
+// app.use(passport.session());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+// ---
+
+// var request = require("request"); // to make API/HTTP requests
+// api.request + TAB will lanch the template
+
+// var methodOverride = require("method-override"); // to use PUT requests as POST requests
+// app.use(methodOverride("_method"));
+
+// var expressSanitizer = require("express-sanitizer"); // to avoid the usage of scripts by users
+// app.use(expressSanitizer());
+
+// app.set('views', __dirname + '/views'); 
+// Fix to Error: Failed to lookup view "weslei/home" in views directory "/home/weslei/apps_nodejs/views"
+// might be needed for other folders
+
+app.set("view engine", "ejs"); // avoid repeating the extension .ejs
+
+app.use(express.static(__dirname + "public")); // public folder for assets - place assets inside it
+
+
+// ---Routes come here:
+
+app.get("/", function(req,res){
+    res.render("home");
+});
+
+
+// code comes here
+
+
+// --- Error 404 - IT HAS TO BE THE LAST ROUTE
+app.get("/*", function(req, res) {
+    res.send("Ops!  - Error 404");
+});
+
+
+// --- Listen to requests (edit as needed); KINGHOST PORT: 21020
+
+app.listen(process.env.PORT_APP||21020, process.env.IP, function() {
+    console.log("Server is running. CRTL + C to quit.");
+});
+
+// --- END OF THE APP
+
+
+    /*
+        REMEMBER:
+
+        To create a mongoose schema (ex: User):
+
+            var userSchema = new mongoose.Schema({
+                email: String,
+                name: String,
+                posts: [postSchema] //embedded must come first
+            });
+            var User = mongoose.model("User", userSchema);
+
+            or
+
+            var userSchema = new mongoose.Schema({
+                email: String,
+                name: String,
+                posts: [{
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "Post"
+                }] //Object References
+            });
+            var User = mongoose.model("User", userSchema);
+
+
+        To add a new item to the array above:
+
+            User.findOne({name: "Hermaione Granger"}, function(err, user){
+                if(err) {
+                    console.log(err);
+                } else {
+                    user.posts.push({
+                        title: "3 things I reallt hate",
+                        content: "Valdemort 3x"
+                    });
+                    user.save(function(err, user){
+                        if(err){
+                            console.log(err);
+                        } else {
+                            console.log(user);
+                        }
+                    });
+                }
+            });
+
+
+        Remeber to fix package.json and add to scripts, right under "test" - put a COMA by the end onf the "test":
+            "start": "node app.js"
+            
+        To create a new repository in git:
+            git init
+
+
+        To add files to git:
+            git add file_name
+            git commit -m "commit message"
+            git push origin master
+    */
