@@ -1,47 +1,71 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* CSS Variables */
 :root {
-    --nav-height: 50px;
-    --nav-neg-position: -50px;
+    --nav-neg-position: -3em;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /*NAVIGATION*/
-nav {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    height: var(--nav-height);
-    align-items: center;
-    width: 100vw;
+header {
     position: fixed;
-    background-color: #2b2b2b;
-    z-index: 10;
     top: var(--nav-neg-position);
+    z-index: 10;
     animation: menu .6s ease-in-out 2s 1 forwards;
-
 }
 
-nav ul li {
-    display: inline-block;
-    list-style: none;
-    padding: 0 15px;
+nav {
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    background-color: #2b2b2b;
+    width: 100vw;
+    line-height: 0;
     color: #f6f6f6;
+    align-items: center;
+    min-height: 5vh;
 }
 
 #menu {
-    grid-column: 1;
-    grid-row: 1;
     padding-left: 100px;
+    grid-column: 1;
+    list-style: none;
 }
 
-#language {
-    grid-column: 2;
-    grid-row: 1;
+#menu > li {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-right: 30px;
+    vertical-align: middle;
+}
+
+#logo{
+    width: 30px;
+}
+
+#languages {
     justify-self: right;
-    padding-right: 100px;
+    margin-right: 100px;
+    grid-column: 2;
+}
+
+#languages>li {
+
+    display: inline-block;
+    text-align: right;
+    padding-left: 5px;
+    padding-right: 0;
+}
+
+#languages img {
+    width: 25px;
 }
 
 /* end of navigation */
@@ -52,63 +76,64 @@ main {
     background-color: #f6f6f6;
     width: 100vw;
     height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
     position: relative;
 }
 
 .brand {
     display: grid;
+    grid-template-columns: 10fr 2fr;
     grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(12, 1fr);
     height: 100vh;
-    width: 100vw;
+    width: 50vw;
     z-index: 5;
-    position: absolute;
+    box-sizing: border-box;
 }
 
-.brand div {
-    display: grid;
-    grid-column: 1 / span 5;
-    grid-row: 4 / span 2;
-    background-color: #f6f6f6;
+.brand img {
+    grid-row: 4;
+    width: 100%
 }
 
-h1 {
-    display: inline-block;
+.brand h1 {
+    /* display: inline-block;
     align-self: center;
     justify-self: right;
-    padding-right: 25px;
-    font-size: 6em;
+    padding-right: 35px;
+    font-size: 8em;
     text-transform: uppercase;
     font-weight: bolder;
-    color: #2b2b2b;
+    color: #2b2b2b; */
+    display: none;
+ 
 }
+
 .brand h2 {
     text-align: right;
-    grid-column: 6/1;
-    grid-row: 6;
+    grid-column: 1;
+    grid-row: 5;
     color: #f6f6f6;
     text-transform: uppercase;
     margin: 1em 0;
-}
-
-.cover2 {
-    position: absolute;
-    z-index: 1;
-    background-image: url('/assets/img/emile-perron-190221-unsplash.jpg');
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    filter: blur(5px) brightness(35%);
-    animation: coverResize2 .6s ease-in-out 2s 1 forwards;
+    font-weight: lighter;
 }
 
 .cover {
+    position: absolute;
+    z-index: 1;
+    background-image: url('/assets/img/emile-perron-190221-unsplash-BG.png');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    /* filter: blur(10px) brightness(30%); */
+    animation: coverResize2 .6s ease-in-out 2s 1 forwards;
+}
+
+.cover2 {
     background-size: cover;
     height: 100vh;
     width: 100vw;
-    background-image: url('/assets/img/avi-richards-183715-unsplash.png');
-    filter: blur(1px) brightness(35%);
+    background-image: url('/assets/img/avi-richards-183715-unsplash-BG.png');
+    /* filter: blur(1px) brightness(35%); */
     animation: coverResize .6s ease-in-out 2s 1 forwards;
     position: absolute;
     z-index: 3;
