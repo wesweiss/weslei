@@ -12,22 +12,23 @@
         <nav>
             <ul id="menu">
                 <li><a href="#"><img id="logo" src="/assets/img/LOGO_NAV_BAR.png" alt=""></a></li>
-                <li><a href="#">about</a></li>
-                <li><a href="#">portfolio</a></li>
-                <li><a href="#">contact</a></li>
+                <li><a href="#"><%=language.sobre%></a></li>
+                <li><a href="#"><%=language.portfolio%></a></li>
+                <li><a href="#"><%=language.contato%></a></li>
             </ul>
             <ul id="languages">
-                <li><img src="/assets/img/Brazil_flat[1].png" alt="pt-br"></li>
-                <li><img src="/assets/img/united-states-of-america-usa[1].png" alt="en-us"></li>
+                <li><a href="/"><img src="/assets/img/Brazil_flat[1].png" alt="pt-br"></a></li>
+                <li><a href="./en-us"><img src="/assets/img/united-states-of-america-usa[1].png" alt="en-us"></a></li>
             </ul>
         </nav>
     </header>
     <main>
         <div class="container">
-            <section class="brand">
+
+            <section class="cover">
                 <img src="/assets/img/TÍTULO.png" alt="Weslei">
                 <h1>Weslei</h1>
-                <h2>software & web development<br>systems analysis</h2>
+                <h2><%= language.titulo1 %><br><%=language.titulo2%></h2>
                 <p><script type="text/javascript">
                     //<![CDATA[
                     <!--
@@ -50,10 +51,11 @@
                     </script>
                 </p>
                 <footer>
-                    <p>WESLEI - 2019 - all rights reserved</p>
+                    <p><%=language.rodape%></p>
                 </footer>
             </section>
         </div>
     </main>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>
