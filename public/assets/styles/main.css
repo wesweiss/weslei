@@ -99,7 +99,7 @@ main {
     height: 100vh;
     position: relative;
     background: url(/assets/img/emile-perron-190221-unsplash-BG.png) 0 0 / cover no-repeat ;
-    animation:  bg-slide 1s ease-in-out 3s 1 forwards,
+    animation:  /*bg-slide 1s ease-in-out 3s 1 forwards,*/
                 box-opacity 500ms ease-in 1s 1 forwards;
     opacity: 0;
 }
@@ -113,8 +113,8 @@ main {
     /* experiment */
     background: url(/assets/img/avi-richards-183715-unsplash-BG.png) 0 0 / cover no-repeat ;
     background-blend-mode: darken;
-    transition: 2s ease;
-    animation:  bg-slide 1s ease-in-out 5s 1 forwards,
+    transition: 2s ease; /*deixado para corrigir velocidade no chrome*/
+    animation:  /*bg-slide 1s ease-in-out 5s 1 forwards,*/
                 box-opacity 1s ease-in 200ms 1 forwards;
     opacity: 0;
     z-index: 80;
@@ -144,7 +144,7 @@ main {
     color: #f6f6f6;
     z-index: 50;
     opacity: 0;
-    animation: box-opacity 1s ease-in 2s 1 forwards;
+    animation: box-opacity 1.5s ease-in 2s 1 forwards;
 }
 
 .cover img {
@@ -192,19 +192,6 @@ main {
 
 /* ANIMATIONS */
 
-@keyframes bg-slide {
-    0% {
-        /* filter: brightness(75%); */
-    }
-
-    100% {
-        /* filter: brightness(100%); */
-        /* background: url(/assets/img/emile-perron-190221-unsplash-BG.png) -50vw 0 / cover no-repeat ; */
-        background-position-x: -50vw;
-        /* background-size: cover; */
-    }
-}
-
 @keyframes menu {
     100% {top: 0}
 }
@@ -221,3 +208,16 @@ main {
         opacity: 1;
     }
 }
+
+/* @keyframes bg-slide {
+    0% {
+        filter: brightness(75%);
+    }
+
+    100% {
+        filter: brightness(100%);
+        background: url(/assets/img/emile-perron-190221-unsplash-BG.png) -50vw 0 / cover no-repeat ;
+        background-position-x: -50vw;
+        background-size: cover;
+    }
+} */

@@ -1,7 +1,9 @@
-const container = document.body.querySelectorAll('.container')[0].style;
+const containerStyle = document.body.querySelectorAll('.container')[0].style;
+const mainStyle = document.body.getElementsByTagName('main')[0].style;
 
 const bg1 = new Image(),
       bg2 = new Image();
+
 bg1.src = '/assets/img/avi-richards-183715-unsplash-BG.png';
 bg2.src = '/assets/img/emile-perron-190221-unsplash-BG.png';
 
@@ -27,5 +29,17 @@ setTimeout(() => {
     //     }
     // }
     // move();
-    container.backgroundImage = 'url(' + bg2.src + ')';
-}, 5000);
+
+    (() => {
+        let width = 0;
+        let id = setInterval(()=> {
+            if (width == -50) clearInterval(id)
+            else {
+                width--;
+                containerStyle.backgroundPositionX = width + "vw";
+                mainStyle.backgroundPositionX = width + 'vw';
+            }
+        }, 1);
+    })();
+    containerStyle.backgroundImage = 'url(' + bg2.src + ')';
+}, 4000);
