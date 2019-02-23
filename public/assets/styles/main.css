@@ -17,8 +17,8 @@ body {
 header {
     position: fixed;
     top: var(--nav-neg-position);
-    z-index: 10;
-    animation: menu 2s ease-in-out 2s 1 forwards;
+    z-index: 100;
+    animation: menu 2s ease-in-out 4s 1 forwards;
 }
 
 nav {
@@ -99,18 +99,38 @@ main {
     height: 100vh;
     position: relative;
     background: url(/assets/img/emile-perron-190221-unsplash-BG.png) 0 0 / cover no-repeat ;
-    animation:  bg-slide 1s ease-in-out 3s 1 forwards;
+    animation:  bg-slide 1s ease-in-out 3s 1 forwards,
+                box-opacity 500ms ease-in 1s 1 forwards;
+    opacity: 0;
 }
 
 .container {
     width: 100vw;
     height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     
     /* experiment */
     background: url(/assets/img/avi-richards-183715-unsplash-BG.png) 0 0 / cover no-repeat ;
     background-blend-mode: darken;
     transition: 2s ease;
-    animation:  bg-slide 1s ease-in-out 3s 1 forwards;
+    animation:  bg-slide 1s ease-in-out 5s 1 forwards,
+                box-opacity 1s ease-in 200ms 1 forwards;
+    opacity: 0;
+    z-index: 80;
+}
+
+#box {
+    /* width: 400px; */
+    background-color: #f5a;
+    grid-column: 2 / 5;
+    align-self: center; /*Posiciona item no meio vertical do espaco */
+    text-align: center;
+    padding: 50px;
+    opacity: 0;
+    margin-top: 10vh;
+    /* transition: 1s ease-in-out 1s; */
+    animation: text-box 1s ease 5500ms 1 forwards;    
 }
 
 .cover {
@@ -119,11 +139,12 @@ main {
     grid-template-rows: repeat(10, 1fr);
     height: 100vh;
     width: 50vw;
-    z-index: 5;
     box-sizing: border-box;
-    position: absolute;
+    /* position: absolute; */
     color: #f6f6f6;
-
+    z-index: 50;
+    opacity: 0;
+    animation: box-opacity 1s ease-in 2s 1 forwards;
 }
 
 .cover img {
@@ -188,3 +209,15 @@ main {
     100% {top: 0}
 }
 
+@keyframes box-opacity {
+    100% { 
+        opacity: 1;
+    }
+}
+
+@keyframes text-box {
+    100% { 
+        transform: translate(10vw, -10vh) scale(1.5); /*scale aumenta tamanho - problemas com grid*/
+        opacity: 1;
+    }
+}

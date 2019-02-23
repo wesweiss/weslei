@@ -28,5 +28,4 @@ setTimeout(() => {
     // }
     // move();
     container.backgroundImage = 'url(' + bg2.src + ')';
-
-}, 3000);
+}, 5000);
