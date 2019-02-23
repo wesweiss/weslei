@@ -156,7 +156,14 @@ main {
 }
 
 .cover h1 {
-    display: none;
+    grid-row: 5;
+    grid-column: 1;
+    text-align: right;
+    color: rgba(0,0,0,0);
+}
+
+.cover>h1::selection {
+    color: rgba(0,0,0,0);
 }
 
 .cover h2 {
