@@ -27,7 +27,7 @@
             <section class="cover">
                 <img src="/assets/img/TÍTULO.png" alt="Weslei">
                 <h1>Weslei</h1>
-                <h2><%= language.titulo1 %><br><%=language.titulo2%></h2>
+                <h2><%= language.titulo1 %><br><%= language.titulo2 %></h2>
                 <p><script type="text/javascript">
                     //<![CDATA[
                     <!--
@@ -50,10 +50,12 @@
                     </script>
                 </p>
                 <footer>
-                    <p><%=language.rodape%></p>
+                    <p><%= language.rodape %></p>
                 </footer>
             </section>
-            <div id="box"><p>página em construção</p></div>
+            <div id="box">
+                <p><%= language.emBreve %></p>
+            </div>
         </div>
     </main>
     <script src="/assets/js/main.js"></script>

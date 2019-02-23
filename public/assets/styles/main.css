@@ -127,10 +127,12 @@ main {
     grid-column: 2 / 5;
     align-self: center; /*Posiciona item no meio vertical do espaco */
     text-align: center;
+    font-size: 2em;
     padding: 50px;
     opacity: 0;
     /* margin-top: 10vh; */
     /* transition: 1s ease-in-out 1s; */
+    transform: scale(0.5);
     animation: text-box 1s ease 5500ms 1 forwards;    
 }
 
@@ -205,7 +207,7 @@ main {
 
 @keyframes text-box {
     100% { 
-        transform: translate(10vw, -15vh) scale(1.5); /*scale aumenta tamanho - problemas com grid*/
+        transform: translate(10vw, -15vh) scale(1); /*scale aumenta tamanho - problemas com grid*/
         opacity: 1;
     }
 }
